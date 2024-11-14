@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+## Configuración de la BD
+spring:
+  application:
+    name: banco-webflux
+  data:
+    mongodb:
+      database: banco
+      host: localhost
+      port: 27017
