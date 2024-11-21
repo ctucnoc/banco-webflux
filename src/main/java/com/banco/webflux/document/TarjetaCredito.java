@@ -12,7 +12,6 @@ public class TarjetaCredito {
 
 	@Id
 	private String id;
-	private String tipo; // 'personal' o 'empresarial'
 	private double limiteCredito;
 	private double saldoActual;
 }

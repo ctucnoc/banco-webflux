@@ -10,3 +10,12 @@ spring:
       database: banco
       host: localhost
       port: 27017
+
+## Configuración de open api
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+#  packages-to-exclude:
+#    - com.banco.webflux.controller

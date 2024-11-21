@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 public class TarjetaCreditoDTORequest implements Serializable {
 
 	private static final long serialVersionUID = -3327439474091070254L;
-	private String tipo;
 	private double limiteCredito;
 	private double saldoActual;
 }

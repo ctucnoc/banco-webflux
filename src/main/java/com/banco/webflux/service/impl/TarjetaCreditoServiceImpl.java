@@ -7,7 +7,6 @@ import com.banco.webflux.dto.request.TarjetaCreditoDTORequest;
 import com.banco.webflux.mapper.ITarjetaCreditoMapper;
 import com.banco.webflux.repository.ITarjetaCreditoRepository;
 import com.banco.webflux.service.ITarjetaCreditoService;
-
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -37,8 +36,8 @@ public class TarjetaCreditoServiceImpl implements ITarjetaCreditoService{
 
 	@Override
 	public Mono<TarjetaCreditoDTO> save(TarjetaCreditoDTORequest tarjetaCredito) {
-		// TODO Auto-generated method stub
-		return null;
+		return tarjetaCreditoRepository.save(tarjetaCreditoMapper.toDocument(tarjetaCredito))
+				.map(tarjetaCreditoMapper::toDto).log();
 	}
 
 }

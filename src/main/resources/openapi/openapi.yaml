@@ -1,0 +1,91 @@
+openapi: 3.0.3
+info:
+  title: Banco API
+  version: 1.0.0
+  description: Proyecto BootCamp 57 - banco apis
+  contact:
+    email: ctc.tucno@gmail.com
+
+tags:
+  - name: Tarjeta credito controller
+    description: Gestionar los controladores de la tarjeta de credito
+
+paths:
+  /api/v1/tarjeta-creditos/{id}:
+    get:
+      summary: Obtener tarjeta de crédito por ID
+      tags: 
+        - Tarjeta credito controller
+      description: Devuelve la tarjeta de crédito correspondiente al ID proporcionado.
+      operationId: findById
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID de la tarjeta de crédito
+      responses:
+        '200':
+          description: Tarjeta de crédito encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TarjetaCreditoDTO'
+        '404':
+          description: Tarjeta de crédito no encontrada
+  /api/v1/tarjeta-creditos:
+    post:
+      summary: Guardar tarjeta de credito
+      tags: 
+        - Tarjeta credito controller
+      operationId: saveTarjetaCredito
+      description: Guarda una Tarjeta de credito
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TarjetaCreditoDTORequest'
+      responses:
+        '201':
+          description: Tarjeta de crédito creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TarjetaCreditoDTO'
+        '404':
+          description: Tarjeta de crédito no encontrada
+components:
+  schemas:
+    TarjetaCreditoDTORequest:
+      type: object
+      properties:
+        limiteCredito:
+          type: number
+          format: double
+          description: Límite de crédito disponible
+        saldoActual:
+          type: number
+          format: double
+          description: Saldo actual disponible en la tarjeta
+      required:
+        - limiteCredito
+        - saldoActual
+    TarjetaCreditoDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Identificador único de la tarjeta de crédito
+        limiteCredito:
+          type: number
+          format: double
+          description: Límite de crédito disponible
+        saldoActual:
+          type: number
+          format: double
+          description: Saldo actual disponible en la tarjeta
+      required:
+        - id
+        - limiteCredito
+        - saldoActual
